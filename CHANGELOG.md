@@ -10,4 +10,4 @@ V1.1 (June 21, 2022)
 * Added Thompson-Nicola area and associated routes
 
 V1.0 (June 1, 2022)
-* Initial public release
+* Initial release
