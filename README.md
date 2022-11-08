@@ -1,6 +1,6 @@
 # BC Highway Events
 
-[Link](https://bc-hwy-events.coltonw.ca)
+[bc-hwy-events.coltonw.ca](https://bc-hwy-events.coltonw.ca)
 
 ## Disclaimers
 * Not affiliated with or endorsed by the Province of British Columbia
