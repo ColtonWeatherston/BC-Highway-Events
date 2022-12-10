@@ -1,5 +1,10 @@
 # Changelog
 
+V1.4 (December 10, 2022)
+* If web app is added to iOS home screen:
+	* Now has home screen icon
+	* Hides Safari UI Components
+
 V1.3 (November 2, 2022)
 * Event link under More Details column is now responsive (will lead to DriveBC desktop site if on a desktop computer)
 
