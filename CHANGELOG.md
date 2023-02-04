@@ -1,7 +1,8 @@
 # Changelog
 
-V1.5 (February xx, 2023)
-* New card view when viewing highway events
+V1.5 (February 4, 2023)
+* New card view for viewing highway events
+	* Toggle to switch between Table and Card views
 
 V1.4 (December 10, 2022)
 * If web app is added to iOS home screen:
