@@ -2,24 +2,24 @@
   $curl = curl_init();
   $url = "https://api.open511.gov.bc.ca/events?";
   $headers = [
-       "Content-Type: application/json"
-    ];
+    "Content-Type: application/json"
+  ];
   
   if ($_POST["highway"] == "") {
-	  if ($_POST["severity"] == "") {
-		$url = $url."area_id=drivebc.ca/".$_POST["area"];
-	  }
-	  else {
-		$url = $url."area_id=drivebc.ca/".$_POST["area"]."&severity=".$_POST["severity"];
-	  }
+    if ($_POST["severity"] == "") {
+      $url = $url."area_id=drivebc.ca/".$_POST["area"];
+    }
+    else {
+      $url = $url."area_id=drivebc.ca/".$_POST["area"]."&severity=".$_POST["severity"];
+    }
   }
   else {
-	  if ($_POST["severity"] == "") {
-		$url = $url."area_id=drivebc.ca/".$_POST["area"]."&road_name=".$_POST["highway"];
-	  }
-	  else {
-		$url = $url."area_id=drivebc.ca/".$_POST["area"]."&road_name=".$_POST["highway"]."&severity=".$_POST["severity"];
-	  }
+    if ($_POST["severity"] == "") {
+    $url = $url."area_id=drivebc.ca/".$_POST["area"]."&road_name=".$_POST["highway"];
+    }
+    else {
+      $url = $url."area_id=drivebc.ca/".$_POST["area"]."&road_name=".$_POST["highway"]."&severity=".$_POST["severity"];
+    }
   }
   
   curl_setopt($curl, CURLOPT_URL, $url);
