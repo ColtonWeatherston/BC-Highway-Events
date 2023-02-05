@@ -1,17 +1,16 @@
-function getData(postData) {
+function getData(queryURL) {
 	$.ajax({
-	 type: "POST",
-	 url: 'includes/getEvents.php',
-	 data: postData,
-	 success: function(data){
-	 responseCode = data.slice(-3);
-	 if (responseCode == "200" || responseCode == "201") {
-		$('#tableRadio').removeAttr('disabled');
-		$('#cardRadio').removeAttr('disabled');
-		$('#submit').removeClass('disabled');
-		$('#submit').removeAttr('disabled');
-		$('#submit').html('View Events');
-	   var myObj = JSON.parse(data.slice(0, -3));
+		type: "GET",
+		url: queryURL,
+		success: function(data, status, xhr){
+		responseCode = xhr.status;
+		if (responseCode == "200" || responseCode == "201") {
+			$('#tableRadio').removeAttr('disabled');
+			$('#cardRadio').removeAttr('disabled');
+			$('#submit').removeClass('disabled');
+			$('#submit').removeAttr('disabled');
+			$('#submit').html('View Events');
+	   var myObj = data;
 	   var result = "";
 	   if (myObj.events.length == 0) {
 			result = '<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div>No events were found matching your criteria</div></div>';
@@ -165,6 +164,7 @@ $(document).ready(function(){
 	$("#submit").click(function(){
 		var responseCode;
 		var postData;
+		var queryURL = 'https://api.open511.gov.bc.ca/events?';
 
 		$('#tableRadio').attr('disabled', true);
 		$('#cardRadio').attr('disabled', true);
@@ -174,21 +174,21 @@ $(document).ready(function(){
 		
 		if ($('#highwaySelect').val() == 'all') {
 			if  ($('#severitySelect').val() == 'all') {
-				postData = {area: $('#areaSelect').val(), highway: "", severity: ""};
+				queryURL += "area_id=drivebc.ca/" + $('#areaSelect').val();
 			}
 			else {
-				postData = {area: $('#areaSelect').val(), highway: "", severity: $('#severitySelect').val()};
+				queryURL += "area_id=drivebc.ca/" + $('#areaSelect').val() + "&severity=" + $('#severitySelect').val();
 			}
 		}
 		else {
 			if  ($('#severitySelect').val() == 'all') {
-				postData = {area: $('#areaSelect').val(), highway: $('#highwaySelect').val(), severity: ""};
+				queryURL += "area_id=drivebc.ca/" + $('#areaSelect').val() + "&road_name=" + $('#highwaySelect').val();
 			}
 			else {
-				postData = {area: $('#areaSelect').val(), highway: $('#highwaySelect').val(), severity: $('#severitySelect').val()};
+				queryURL += "area_id=drivebc.ca/" + $('#areaSelect').val() + "&road_name=" + $('#highwaySelect').val() + "&severity=" + $('#severitySelect').val();
 			}
 		}
 		
-		getData(postData);
+		getData(queryURL);
 	});
 });
