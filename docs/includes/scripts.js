@@ -6,9 +6,11 @@ function getData(postData) {
 	 success: function(data){
 	 responseCode = data.slice(-3);
 	 if (responseCode == "200" || responseCode == "201") {
-	   $('#submit').removeClass('disabled');
-	   $('#submit').removeAttr('disabled');
-	   $('#submit').html('View Events');
+		$('#tableRadio').removeAttr('disabled');
+		$('#cardRadio').removeAttr('disabled');
+		$('#submit').removeClass('disabled');
+		$('#submit').removeAttr('disabled');
+		$('#submit').html('View Events');
 	   var myObj = JSON.parse(data.slice(0, -3));
 	   var result = "";
 	   if (myObj.events.length == 0) {
@@ -94,30 +96,36 @@ function getData(postData) {
 			$('#resultCardView').show();
 			$('#resultCardView').html(result);
 		}
-	 }
-	 else if (responseCode == "400") {
-	   $('#submit').removeClass('disabled');
-	   $('#submit').removeAttr('disabled');
-	   $('#submit').html('Submit');
-	   $('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div>(Error 400 - Bad Request) Likely an invalid query. Please try again.</div></div>');
-	 }
-	 else if (responseCode == "401") {
-	   $('#submit').removeClass('disabled');
-	   $('#submit').removeAttr('disabled');
-	   $('#submit').html('Submit');
-	   $('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div>(Error 401 - Forbidden) Invalid Credentials. Please try again.</div></div>');
-	 }
-	 else if (responseCode == "404") {
-	   $('#submit').removeClass('disabled');
-	   $('#submit').removeAttr('disabled');
-	   $('#submit').html('Submit');
-	   $('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div>(Error 404 - Not Found) The Endpoint URL could not be found. Please try again.</div></div>');
-	 }
-	 },
-	 error: function(xhr, status, error){
-	 console.error(xhr);
-	 }
-	});
+	}
+	else if (responseCode == "400") {
+		$('#tableRadio').removeAttr('disabled');
+		$('#cardRadio').removeAttr('disabled');
+		$('#submit').removeClass('disabled');
+		$('#submit').removeAttr('disabled');
+		$('#submit').html('Submit');
+		$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div>(Error 400 - Bad Request) Likely an invalid query. Please try again.</div></div>');
+	}
+	else if (responseCode == "401") {
+		$('#tableRadio').removeAttr('disabled');
+		$('#cardRadio').removeAttr('disabled');
+		$('#submit').removeClass('disabled');
+		$('#submit').removeAttr('disabled');
+		$('#submit').html('Submit');
+		$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div>(Error 401 - Forbidden) Invalid Credentials. Please try again.</div></div>');
+	}
+	else if (responseCode == "404") {
+		$('#tableRadio').removeAttr('disabled');
+		$('#cardRadio').removeAttr('disabled');
+		$('#submit').removeClass('disabled');
+		$('#submit').removeAttr('disabled');
+		$('#submit').html('Submit');
+	$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div>(Error 404 - Not Found) The Endpoint URL could not be found. Please try again.</div></div>');
+	}
+	},
+	error: function(xhr, status, error){
+	console.error(xhr);
+	}
+});
 }
 
 $("#areaSelect").change(function() {
@@ -158,9 +166,11 @@ $(document).ready(function(){
 	$("#submit").click(function(){
 		var responseCode;
 		var postData;
-		
+
+		$('#tableRadio').attr('disabled', true);
+		$('#cardRadio').attr('disabled', true);
 		$('#submit').addClass('disabled');
-		$('#submit').attr('disabled');
+		$('#submit').attr('disabled', true);
 		$('#submit').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...');
 		
 		if ($('#highwaySelect').val() == 'all') {
