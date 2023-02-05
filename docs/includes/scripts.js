@@ -75,7 +75,6 @@ function getData(postData) {
 					}
 				}
 				else {
-
 					// Sets table row colour to RED if event is MAJOR
 					if (myObj.events[x].severity == 'MAJOR') {
 						result += '<div class="col"><div class="card text-bg-danger"><div class="card-body"><h5 class="card-title">' + myObj.events[x].roads[j].name + ' ' + dirPhrase + '</h5>' + '<h6 class="card-subtitle mb-2 text-black">' + segment + '</h6>' + '<p class="card-text">' + myObj.events[x].description + '</p>' + '<a href="https://www.drivebc.ca/~' + (myObj.events[x].id).slice(11) + '" class="btn btn-info" target="_blank">More Details</a><br><br><div class="card-footer text-black"> Last Updated: ' + ((myObj.events[x].updated).replace("T", " ")).slice(0, 19) + '</div>' + '</div></div></div>';
