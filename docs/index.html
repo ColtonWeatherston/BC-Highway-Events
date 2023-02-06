@@ -6,7 +6,8 @@
 		<link rel="apple-touch-icon" href="/app-icon.png">
 		<meta name="apple-mobile-web-app-title" content="BC Hwy Events">
 		<meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+		<script crossorigin src="https://unpkg.com/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
 		<script crossorigin src="https://unpkg.com/jquery@3.6.1/dist/jquery.min.js"></script>
   </head>
   <body>
@@ -32,7 +33,7 @@
     <div id="form" class="container">
       <div class="form-group">
 		<div class="row">
-			<div class="col">
+			<div class="col-4 col-md-3">
 				<div class="form-floating">
 					<select class="form-select" name="area" id="areaSelect">
 					  <option value="2" selected>Vancouver Island</option>
@@ -42,14 +43,14 @@
 					<label for="areaSelect">Area</label>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-4 col-md-3">
 				<div class="form-floating">
 					<select class="form-select" name="highway" id="highwaySelect">
 					</select>
 					<label for="highwaySelect">Route</label>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-4 col-md-3">
 				<div class="form-floating">
 					<select class="form-select" name="severity" id="severitySelect">
 						<option value="all" selected>All</option>
@@ -57,6 +58,17 @@
 						<option value="MINOR">Minor</option>
 					</select>
 					<label for="severitySelect">Severity</label>
+				</div>
+			</div>
+			<div class="col-4 col-md-3">
+				View as: <br>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="viewRadio" id="tableRadio" value="table" checked>
+					<label class="form-check-label" for="tableRadio">Table</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="viewRadio" id="cardRadio" value="card">
+					<label class="form-check-label" for="cardRadio">Cards</label>
 				</div>
 			</div>
 			</div>
@@ -67,15 +79,15 @@
       <div id="submitError">
       </div>
 
-      <!--<button type="button" name="Submit" id="submit" class="btn btn-dark" style="background-color: #0091ff;">View Events</button>-->
 			<button type="button" name="Submit" id="submit" class="btn btn-info">View Events</button>
     </div>
 	
 	<br>
 	
-    <div id="result" class="container table-responsive">
-		<table class="table table-bordered table-striped" id="resultTable"></table>
+    <div id="resultTableView" class="container table-responsive">
+			<table class="table table-bordered table-striped" id="resultTable"></table>
     </div>
+		<div id="resultCardView" class="container"></div>
 
 	<div id="footer" class="pt-4 my-md-4 pt-md-4 border-top">
 		<p class="text-center">This site is not affiliated with or endorsed by the Province of British Columbia</p>

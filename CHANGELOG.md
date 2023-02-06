@@ -1,5 +1,10 @@
 # Changelog
 
+V1.5 (February xx, 2023)
+* New card view for viewing highway events (provides better experience for mobile viewing)
+	* Toggle to switch between existing Table view and new Card view
+* Web app no longer uses PHP! Should result in faster performance.
+
 V1.4 (December 10, 2022)
 * If web app is added to iOS home screen:
 	* Now has home screen icon
