@@ -1,6 +1,6 @@
 # Changelog
 
-V1.5 (February xx, 2023)
+V1.5 (February 5, 2023)
 * New card view for viewing highway events (provides better experience for mobile viewing)
 	* Toggle to switch between existing Table view and new Card view
 * Web app no longer uses PHP! Should result in faster performance.
