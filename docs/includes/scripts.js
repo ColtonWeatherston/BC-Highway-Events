@@ -130,13 +130,17 @@ $("#areaSelect").change(function() {
 	if ($("#areaSelect").val() == "2") { // Vancouver Island
 		$("#highwaySelect").html('<option value="all" selected>All</option>\
 								<option value="Highway%201">Highway 1 (Trans-Canada Hwy)</option>\
+								<option value="Highway%201A">Highway 1A (Chemainus Rd)</option>\
 								<option value="Highway%204">Highway 4 (Alberni/Pacific Rim Hwy</option>\
 								<option value="Highway%204A">Highway 4A (Old Alberni Hwy)</option>\
 								<option value="Highway%2014">Highway 14 (Sooke Rd/West Coast Rd)</option>\
 								<option value="Highway%2017">Highway 17 (Pat Bay Hwy)</option>\
+								<option value="Highway%2017A">Highway 17A (West Saanich Rd/Wain Rd)</option>\
 								<option value="Highway%2018">Highway 18 (Cowichan Valley Hwy)</option>\
 								<option value="Highway%2019">Highway 19 (Nanaimo Pkwy/Inland Island Hwy/North Island Hwy)</option>\
-								<option value="Highway%2019A">Highway 19A (Old Island Hwy N)</option>');
+								<option value="Highway%2019A">Highway 19A (Old Island Hwy N)</option>\
+								<option value="Highway%2028">Highway 28 (Gold River Hwy)</option>\
+								<option value="Highway%2030">Highway 30 (Port Alice Rd)</option>');
 	}
 	else if ($("#areaSelect").val() == "1") { // Lower Mainland
 		$("#highwaySelect").html('<option value="all" selected>All</option>\
