@@ -4,9 +4,10 @@ function getData(queryURL) {
 		url: queryURL,
 		success: function(data, status, xhr){
 		responseCode = xhr.status;
-		if (responseCode == "200" || responseCode == "201") {
+		if (responseCode == "200") {
 			$('#tableRadio').removeAttr('disabled');
 			$('#cardRadio').removeAttr('disabled');
+			$('#submitError').hide();
 			$('#submit').removeClass('disabled');
 			$('#submit').removeAttr('disabled');
 			$('#submit').html('View Events');
@@ -95,33 +96,53 @@ function getData(queryURL) {
 			$('#resultCardView').html(result);
 		}
 	}
-	else if (responseCode == "400") {
-		$('#tableRadio').removeAttr('disabled');
-		$('#cardRadio').removeAttr('disabled');
-		$('#submit').removeClass('disabled');
-		$('#submit').removeAttr('disabled');
-		$('#submit').html('Submit');
-		$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div>(Error 400 - Bad Request) Likely an invalid query. Please try again.</div></div>');
-	}
-	else if (responseCode == "401") {
-		$('#tableRadio').removeAttr('disabled');
-		$('#cardRadio').removeAttr('disabled');
-		$('#submit').removeClass('disabled');
-		$('#submit').removeAttr('disabled');
-		$('#submit').html('Submit');
-		$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div>(Error 401 - Forbidden) Invalid Credentials. Please try again.</div></div>');
-	}
-	else if (responseCode == "404") {
-		$('#tableRadio').removeAttr('disabled');
-		$('#cardRadio').removeAttr('disabled');
-		$('#submit').removeClass('disabled');
-		$('#submit').removeAttr('disabled');
-		$('#submit').html('Submit');
-	$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div>(Error 404 - Not Found) The Endpoint URL could not be found. Please try again.</div></div>');
-	}
 	},
 	error: function(xhr, status, error){
-	console.error(xhr);
+		console.error(xhr);
+		if (xhr.status == "400") {
+			$('#tableRadio').removeAttr('disabled');
+			$('#cardRadio').removeAttr('disabled');
+			$('#submit').removeClass('disabled');
+			$('#submit').removeAttr('disabled');
+			$('#submit').html('Submit');
+			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(Error 400 - Bad Request)</strong> Likely an invalid query. Please try again.</div></div>');
+			$('#submitError').show();
+		}
+		else if (xhr.status == "401") {
+			$('#tableRadio').removeAttr('disabled');
+			$('#cardRadio').removeAttr('disabled');
+			$('#submit').removeClass('disabled');
+			$('#submit').removeAttr('disabled');
+			$('#submit').html('Submit');
+			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(Error 401 - Forbidden)</strong> Invalid Credentials. Please try again.</div></div>');
+			$('#submitError').show();
+		}
+		else if (xhr.status == "404") {
+			$('#tableRadio').removeAttr('disabled');
+			$('#cardRadio').removeAttr('disabled');
+			$('#submit').removeClass('disabled');
+			$('#submit').removeAttr('disabled');
+			$('#submit').html('Submit');
+			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(Error 404 - Not Found)</strong> The Endpoint URL could not be found. Please try again.</div></div>');
+			$('#submitError').show();
+		}
+		else if (xhr.status == "429") { // If API responds with "too many requests" error
+			$('#tableRadio').removeAttr('disabled');
+			$('#cardRadio').removeAttr('disabled');
+			$('#submit').removeClass('disabled');
+			$('#submit').removeAttr('disabled');
+			$('#submit').html('View Events');
+			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(Error 429 - Too many requests)</strong> Please wait 30 seconds and try again.</div></div>');
+			$('#submitError').show();
+		} else { // unhandled error
+			$('#tableRadio').removeAttr('disabled');
+			$('#cardRadio').removeAttr('disabled');
+			$('#submit').removeClass('disabled');
+			$('#submit').removeAttr('disabled');
+			$('#submit').html('View Events');
+			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(Unhandled exception)</strong> Please try again.</div></div>');
+			$('#submitError').show();
+		}
 	}
 });
 }
