@@ -1,4 +1,11 @@
 # Changelog
+V1.6 (June 6, 2023)
+* Added the following highways for Vancouver Island:
+	* Highway 1A (Chemainus Rd)
+	* Highway 17A (West Saanich Rd/Wain Rd)
+	* Highway 28 (Gold River Hwy)
+	* Highway 30 (Port Alice Rd)
+* Improved error handling
 
 V1.5 (February 5, 2023)
 * New card view for viewing highway events (provides better experience for mobile viewing)
