@@ -75,12 +75,12 @@ function getData(queryURL) {
 					}
 				}
 				else {
-					// Sets table row colour to RED if event is MAJOR
+					// Sets card colour to RED if event is MAJOR
 					if (myObj.events[x].severity == 'MAJOR') {
-						result += '<div class="col"><div class="card text-bg-danger"><div class="card-body"><h5 class="card-title">' + myObj.events[x].roads[j].name + ' ' + dirPhrase + '</h5>' + '<h6 class="card-subtitle mb-2 text-black">' + segment + '</h6>' + '<p class="card-text">' + myObj.events[x].description + '</p>' + '<a href="https://www.drivebc.ca/~' + (myObj.events[x].id).slice(11) + '" class="btn btn-info" target="_blank">More Details</a><br><br><div class="card-footer text-black"> Last Updated: ' + ((myObj.events[x].updated).replace("T", " ")).slice(0, 19) + '</div>' + '</div></div></div>';
+						result += '<div class="col"><div class="card text-bg-danger"><div class="card-body"><h5 class="card-title">' + myObj.events[x].roads[j].name + ' ' + dirPhrase + '</h5>' + '<h6 class="card-subtitle mb-2 text-black">' + segment + '</h6>' + '<p class="card-text">' + myObj.events[x].description + '</p>' + '<a href="https://www.drivebc.ca/~' + (myObj.events[x].id).slice(11) + '" class="btn btn-info" target="_blank">More Details</a><br><br><div class="card-footer text-black"> Event Type: ' + myObj.events[x].event_type + " - " + myObj.events[x].event_subtypes + '<br>Last Updated: ' + ((myObj.events[x].updated).replace("T", " ")).slice(0, 19) + '</div>' + '</div></div></div>';
 					}
 					else {
-						result += '<div class="col"><div class="card"><div class="card-body"><h5 class="card-title">' + myObj.events[x].roads[j].name + ' ' + dirPhrase + '</h5>' + '<h6 class="card-subtitle mb-2 text-muted">' + segment + '</h6>' + '<p class="card-text">' + myObj.events[x].description + '</p><a href="https://www.drivebc.ca/~' + (myObj.events[x].id).slice(11) + '" class="btn btn-info" target="_blank">More Details</a>' + '<br><br><div class="card-footer text-muted"> Last Updated: ' + ((myObj.events[x].updated).replace("T", " ")).slice(0, 19) + '</div>' + '</div></div></div>';
+						result += '<div class="col"><div class="card"><div class="card-body"><h5 class="card-title">' + myObj.events[x].roads[j].name + ' ' + dirPhrase + '</h5>' + '<h6 class="card-subtitle mb-2 text-muted">' + segment + '</h6>' + '<p class="card-text">' + myObj.events[x].description + '</p><a href="https://www.drivebc.ca/~' + (myObj.events[x].id).slice(11) + '" class="btn btn-info" target="_blank">More Details</a>' + '<br><br><div class="card-footer text-muted"> Event Type: ' + myObj.events[x].event_type + " - " + myObj.events[x].event_subtypes + '<br>Last Updated: ' + ((myObj.events[x].updated).replace("T", " ")).slice(0, 19) + '</div>' + '</div></div></div>';
 					}
 				}
 			}
@@ -166,9 +166,17 @@ $("#areaSelect").change(function() {
 	else if ($("#areaSelect").val() == "1") { // Lower Mainland
 		$("#highwaySelect").html('<option value="all" selected>All</option>\
 								<option value="Highway%201">Highway 1 (Trans-Canada Hwy)</option>\
+								<option value="Highway%207">Highway 7 (Lougheed Highway)</option>\
+								<option value="Highway%207A">Highway 7A</option>\
+								<option value="Highway%207B">Highway 7B (Mary Hill Bypass)</option>\
+								<option value="Highway%2010">Highway 10</option>\
+								<option value="Highway%2011">Highway 11 (Sumas Way/Abbotsford-Mission Hwy)</option>\
+								<option value="Highway%2013">Highway 13 (264th St/Aldergrove-Bellingham Hwy)</option>\
+								<option value="Highway%2015">Highway 15 (Pacific Hwy/176th St)</option>\
 								<option value="Highway%2017">Highway 17 (SFPR)</option>\
 								<option value="Highway%2017A">Highway 17A</option>\
 								<option value="Highway%2091">Highway 91 (East-West Connector/Annacis Hwy)</option>\
+								<option value="Highway%2091A">Highway 91A (Queensborough Connector)</option>\
 								<option value="Highway%2099">Highway 99</option>');
 	}
 	else if ($("#areaSelect").val() == "6") { // Thompson-Nicola
