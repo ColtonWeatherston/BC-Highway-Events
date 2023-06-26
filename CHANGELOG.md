@@ -10,6 +10,8 @@ V1.7 (June 26, 2023)
 	* Highway 15 (Pacific Hwy/176th St)
 	* Highway 91A (Queensborough Connector)
 * Event cause now displayed in card view
+* Event 'type' renamed to 'cause' in table view
+* Minor updates to error messaging
 
 V1.6 (June 6, 2023)
 * Added the following highways for Vancouver Island:
