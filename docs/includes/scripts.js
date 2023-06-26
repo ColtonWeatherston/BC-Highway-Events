@@ -105,7 +105,7 @@ function getData(queryURL) {
 			$('#submit').removeClass('disabled');
 			$('#submit').removeAttr('disabled');
 			$('#submit').html('Submit');
-			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(Error 400 - Bad Request)</strong> Likely an invalid query. Please try again.</div></div>');
+			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(API Error 400 - Bad Request)</strong> Likely an invalid query. Please try again.</div></div>');
 			$('#submitError').show();
 		}
 		else if (xhr.status == "401") {
@@ -114,7 +114,7 @@ function getData(queryURL) {
 			$('#submit').removeClass('disabled');
 			$('#submit').removeAttr('disabled');
 			$('#submit').html('Submit');
-			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(Error 401 - Forbidden)</strong> Invalid Credentials. Please try again.</div></div>');
+			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(API Error 401 - Forbidden)</strong> Invalid Credentials. Please try again.</div></div>');
 			$('#submitError').show();
 		}
 		else if (xhr.status == "404") {
@@ -123,7 +123,7 @@ function getData(queryURL) {
 			$('#submit').removeClass('disabled');
 			$('#submit').removeAttr('disabled');
 			$('#submit').html('Submit');
-			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(Error 404 - Not Found)</strong> The Endpoint URL could not be found. Please try again.</div></div>');
+			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(API Error 404 - Not Found)</strong> The Endpoint URL could not be found. Please try again.</div></div>');
 			$('#submitError').show();
 		}
 		else if (xhr.status == "429") { // If API responds with "too many requests" error
@@ -132,7 +132,7 @@ function getData(queryURL) {
 			$('#submit').removeClass('disabled');
 			$('#submit').removeAttr('disabled');
 			$('#submit').html('View Events');
-			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(Error 429 - Too many requests)</strong> Please wait 30 seconds and try again.</div></div>');
+			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(API Error 429 - Too many requests)</strong> Please wait 30 seconds and try again.</div></div>');
 			$('#submitError').show();
 		} else { // unhandled error
 			$('#tableRadio').removeAttr('disabled');
