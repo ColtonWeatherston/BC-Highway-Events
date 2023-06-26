@@ -1,4 +1,18 @@
 # Changelog
+V1.7 (June 26, 2023)
+* Added the following highways for Lower Mainland:
+	* Highway 7 (Lougheed Highway)
+	* Highway 7A
+	* Highway 7B (Mary Hill Bypass)
+	* Highway 10
+	* Highway 11 (Sumas Way/Abbotsford-Mission Hwy)
+	* Highway 13 (264th St/Aldergrove-Bellingham Hwy)
+	* Highway 15 (Pacific Hwy/176th St)
+	* Highway 91A (Queensborough Connector)
+* Event cause now displayed in card view
+* Event 'type' renamed to 'cause' in table view
+* Minor updates to error messaging
+
 V1.6 (June 6, 2023)
 * Added the following highways for Vancouver Island:
 	* Highway 1A (Chemainus Rd)

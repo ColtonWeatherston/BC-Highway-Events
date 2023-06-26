@@ -18,7 +18,7 @@ function getData(queryURL) {
 	   }
 	   else {
 			if ($("input[name='viewRadio']:checked").val() == "table") {
-				result = "<thead class=\"table-light\"><tr><th>Route</th><th>Segment</th><th>Type</th><th>Severity</th><th>Description</th><th>Created</th><th>Last Updated</th><th>More Details</th></tr></thead>";
+				result = "<thead class=\"table-light\"><tr><th>Route</th><th>Segment</th><th>Cause</th><th>Severity</th><th>Description</th><th>Created</th><th>Last Updated</th><th>More Details</th></tr></thead>";
 			}
 			else {
 				result = '<div class="row row-cols-1 row-cols-md-2 g-4">';
@@ -75,12 +75,12 @@ function getData(queryURL) {
 					}
 				}
 				else {
-					// Sets table row colour to RED if event is MAJOR
+					// Sets card colour to RED if event is MAJOR
 					if (myObj.events[x].severity == 'MAJOR') {
-						result += '<div class="col"><div class="card text-bg-danger"><div class="card-body"><h5 class="card-title">' + myObj.events[x].roads[j].name + ' ' + dirPhrase + '</h5>' + '<h6 class="card-subtitle mb-2 text-black">' + segment + '</h6>' + '<p class="card-text">' + myObj.events[x].description + '</p>' + '<a href="https://www.drivebc.ca/~' + (myObj.events[x].id).slice(11) + '" class="btn btn-info" target="_blank">More Details</a><br><br><div class="card-footer text-black"> Last Updated: ' + ((myObj.events[x].updated).replace("T", " ")).slice(0, 19) + '</div>' + '</div></div></div>';
+						result += '<div class="col"><div class="card text-bg-danger"><div class="card-body"><h5 class="card-title">' + myObj.events[x].roads[j].name + ' ' + dirPhrase + '</h5>' + '<h6 class="card-subtitle mb-2 text-black">' + segment + '</h6>' + '<p class="card-text">' + myObj.events[x].description + '</p>' + '<a href="https://www.drivebc.ca/~' + (myObj.events[x].id).slice(11) + '" class="btn btn-info" target="_blank">More Details</a><br><br><div class="card-footer text-black"> Cause: ' + myObj.events[x].event_type + " - " + myObj.events[x].event_subtypes + '<br>Last Updated: ' + ((myObj.events[x].updated).replace("T", " ")).slice(0, 19) + '</div>' + '</div></div></div>';
 					}
 					else {
-						result += '<div class="col"><div class="card"><div class="card-body"><h5 class="card-title">' + myObj.events[x].roads[j].name + ' ' + dirPhrase + '</h5>' + '<h6 class="card-subtitle mb-2 text-muted">' + segment + '</h6>' + '<p class="card-text">' + myObj.events[x].description + '</p><a href="https://www.drivebc.ca/~' + (myObj.events[x].id).slice(11) + '" class="btn btn-info" target="_blank">More Details</a>' + '<br><br><div class="card-footer text-muted"> Last Updated: ' + ((myObj.events[x].updated).replace("T", " ")).slice(0, 19) + '</div>' + '</div></div></div>';
+						result += '<div class="col"><div class="card"><div class="card-body"><h5 class="card-title">' + myObj.events[x].roads[j].name + ' ' + dirPhrase + '</h5>' + '<h6 class="card-subtitle mb-2 text-muted">' + segment + '</h6>' + '<p class="card-text">' + myObj.events[x].description + '</p><a href="https://www.drivebc.ca/~' + (myObj.events[x].id).slice(11) + '" class="btn btn-info" target="_blank">More Details</a>' + '<br><br><div class="card-footer text-muted"> Cause: ' + myObj.events[x].event_type + " - " + myObj.events[x].event_subtypes + '<br>Last Updated: ' + ((myObj.events[x].updated).replace("T", " ")).slice(0, 19) + '</div>' + '</div></div></div>';
 					}
 				}
 			}
@@ -105,7 +105,7 @@ function getData(queryURL) {
 			$('#submit').removeClass('disabled');
 			$('#submit').removeAttr('disabled');
 			$('#submit').html('Submit');
-			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(Error 400 - Bad Request)</strong> Likely an invalid query. Please try again.</div></div>');
+			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(API Error 400 - Bad Request)</strong> Likely an invalid query. Please try again.</div></div>');
 			$('#submitError').show();
 		}
 		else if (xhr.status == "401") {
@@ -114,7 +114,7 @@ function getData(queryURL) {
 			$('#submit').removeClass('disabled');
 			$('#submit').removeAttr('disabled');
 			$('#submit').html('Submit');
-			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(Error 401 - Forbidden)</strong> Invalid Credentials. Please try again.</div></div>');
+			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(API Error 401 - Forbidden)</strong> Invalid Credentials. Please try again.</div></div>');
 			$('#submitError').show();
 		}
 		else if (xhr.status == "404") {
@@ -123,7 +123,7 @@ function getData(queryURL) {
 			$('#submit').removeClass('disabled');
 			$('#submit').removeAttr('disabled');
 			$('#submit').html('Submit');
-			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(Error 404 - Not Found)</strong> The Endpoint URL could not be found. Please try again.</div></div>');
+			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(API Error 404 - Not Found)</strong> The Endpoint URL could not be found. Please try again.</div></div>');
 			$('#submitError').show();
 		}
 		else if (xhr.status == "429") { // If API responds with "too many requests" error
@@ -132,7 +132,7 @@ function getData(queryURL) {
 			$('#submit').removeClass('disabled');
 			$('#submit').removeAttr('disabled');
 			$('#submit').html('View Events');
-			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(Error 429 - Too many requests)</strong> Please wait 30 seconds and try again.</div></div>');
+			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(API Error 429 - Too many requests)</strong> Please wait 30 seconds and try again.</div></div>');
 			$('#submitError').show();
 		} else { // unhandled error
 			$('#tableRadio').removeAttr('disabled');
@@ -166,9 +166,17 @@ $("#areaSelect").change(function() {
 	else if ($("#areaSelect").val() == "1") { // Lower Mainland
 		$("#highwaySelect").html('<option value="all" selected>All</option>\
 								<option value="Highway%201">Highway 1 (Trans-Canada Hwy)</option>\
+								<option value="Highway%207">Highway 7 (Lougheed Highway)</option>\
+								<option value="Highway%207A">Highway 7A</option>\
+								<option value="Highway%207B">Highway 7B (Mary Hill Bypass)</option>\
+								<option value="Highway%2010">Highway 10</option>\
+								<option value="Highway%2011">Highway 11 (Sumas Way/Abbotsford-Mission Hwy)</option>\
+								<option value="Highway%2013">Highway 13 (264th St/Aldergrove-Bellingham Hwy)</option>\
+								<option value="Highway%2015">Highway 15 (Pacific Hwy/176th St)</option>\
 								<option value="Highway%2017">Highway 17 (SFPR)</option>\
 								<option value="Highway%2017A">Highway 17A</option>\
 								<option value="Highway%2091">Highway 91 (East-West Connector/Annacis Hwy)</option>\
+								<option value="Highway%2091A">Highway 91A (Queensborough Connector)</option>\
 								<option value="Highway%2099">Highway 99</option>');
 	}
 	else if ($("#areaSelect").val() == "6") { // Thompson-Nicola
