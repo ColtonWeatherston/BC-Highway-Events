@@ -1,7 +1,0 @@
-applications:
-  - appRoot: app
-    customHeaders:
-      - pattern: '**'
-        headers:
-          - key: Strict-Transport-Security
-            value: max-age=31536000;
