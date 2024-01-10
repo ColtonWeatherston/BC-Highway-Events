@@ -5,11 +5,10 @@ function getData(queryURL) {
 		success: function(data, status, xhr){
 		responseCode = xhr.status;
 		if (responseCode == "200") {
-			$('#tableRadio').removeAttr('disabled');
-			$('#cardRadio').removeAttr('disabled');
+			$('#tableRadio').attr('disabled', false);
+			$('#cardRadio').attr('disabled', false);
 			$('#submitError').hide();
-			$('#submit').removeClass('disabled');
-			$('#submit').removeAttr('disabled');
+			$('#submit').attr('disabled', false);
 			$('#submit').html('View Events');
 	   var myObj = data;
 	   var result = "";
@@ -21,7 +20,7 @@ function getData(queryURL) {
 				result = "<thead class=\"table-light\"><tr><th>Route</th><th>Segment</th><th>Cause</th><th>Severity</th><th>Description</th><th>Created</th><th>Last Updated</th><th>More Details</th></tr></thead>";
 			}
 			else {
-				result = '<div class="row row-cols-1 row-cols-md-2 g-4">';
+				result = '<div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">';
 			}
 		}
 		// PARSE JSON myObj (in data) and insert into variable "result"
@@ -100,45 +99,37 @@ function getData(queryURL) {
 	error: function(xhr, status, error){
 		console.error(xhr);
 		if (xhr.status == "400") {
-			$('#tableRadio').removeAttr('disabled');
-			$('#cardRadio').removeAttr('disabled');
-			$('#submit').removeClass('disabled');
-			$('#submit').removeAttr('disabled');
-			$('#submit').html('Submit');
+			$('#tableRadio').attr('disabled', false);
+			$('#cardRadio').attr('disabled', false);
+			$('#submit').attr('disabled', false);
+			$('#submit').html('View Events');
 			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(API Error 400 - Bad Request)</strong> Likely an invalid query. Please try again.</div></div>');
 			$('#submitError').show();
-		}
-		else if (xhr.status == "401") {
-			$('#tableRadio').removeAttr('disabled');
-			$('#cardRadio').removeAttr('disabled');
-			$('#submit').removeClass('disabled');
-			$('#submit').removeAttr('disabled');
-			$('#submit').html('Submit');
+		} else if (xhr.status == "401") {
+			$('#tableRadio').attr('disabled', false);
+			$('#cardRadio').attr('disabled', false);
+			$('#submit').attr('disabled', false);
+			$('#submit').html('View Events');
 			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(API Error 401 - Forbidden)</strong> Invalid Credentials. Please try again.</div></div>');
 			$('#submitError').show();
-		}
-		else if (xhr.status == "404") {
-			$('#tableRadio').removeAttr('disabled');
-			$('#cardRadio').removeAttr('disabled');
-			$('#submit').removeClass('disabled');
-			$('#submit').removeAttr('disabled');
-			$('#submit').html('Submit');
+		} else if (xhr.status == "404") {
+			$('#tableRadio').attr('disabled', false);
+			$('#cardRadio').attr('disabled', false);
+			$('#submit').attr('disabled', false);
+			$('#submit').html('View Events');
 			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(API Error 404 - Not Found)</strong> The Endpoint URL could not be found. Please try again.</div></div>');
 			$('#submitError').show();
-		}
-		else if (xhr.status == "429") { // If API responds with "too many requests" error
-			$('#tableRadio').removeAttr('disabled');
-			$('#cardRadio').removeAttr('disabled');
-			$('#submit').removeClass('disabled');
-			$('#submit').removeAttr('disabled');
+		} else if (xhr.status == "429") { // If API responds with "too many requests" error
+			$('#tableRadio').attr('disabled', false);
+			$('#cardRadio').attr('disabled', false);
+			$('#submit').attr('disabled', false);
 			$('#submit').html('View Events');
 			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(API Error 429 - Too many requests)</strong> Please wait 30 seconds and try again.</div></div>');
 			$('#submitError').show();
 		} else { // unhandled error
-			$('#tableRadio').removeAttr('disabled');
-			$('#cardRadio').removeAttr('disabled');
-			$('#submit').removeClass('disabled');
-			$('#submit').removeAttr('disabled');
+			$('#tableRadio').attr('disabled', false);
+			$('#cardRadio').attr('disabled', false);
+			$('#submit').attr('disabled', false);
 			$('#submit').html('View Events');
 			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(Unhandled exception)</strong> Please try again.</div></div>');
 			$('#submitError').show();
@@ -201,7 +192,6 @@ $(document).ready(function(){
 
 		$('#tableRadio').attr('disabled', true);
 		$('#cardRadio').attr('disabled', true);
-		$('#submit').addClass('disabled');
 		$('#submit').attr('disabled', true);
 		$('#submit').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...');
 		
