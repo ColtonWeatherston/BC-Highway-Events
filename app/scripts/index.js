@@ -122,20 +122,10 @@ function getData(queryURL) {
 		} else if (xhr.status == "429") { // If API responds with "too many requests" error
 			$('#tableRadio').attr('disabled', false);
 			$('#cardRadio').attr('disabled', false);
-			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(API Error 429 - Too many requests)</strong> Please wait 5 seconds and try again.</div></div>');
+			$('#submit').attr('disabled', false);
+			$('#submit').html('View Events');
+			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(API Error 429 - Too many requests)</strong> Please wait 30 seconds and try again.</div></div>');
 			$('#submitError').show();
-			
-			var timeLeft = 5;
-			var countdownTimer = setInterval(function(){
-				if(timeLeft <= 0){
-					clearInterval(countdownTimer);
-					$('#submit').attr('disabled', false);
-					$('#submit').html('View Events');
-				} else {
-					$('#submit').html('Please wait ' + timeLeft + ' seconds...');
-				}
-				timeLeft -= 1;
-			}, 1000);
 		} else { // unhandled error
 			$('#tableRadio').attr('disabled', false);
 			$('#cardRadio').attr('disabled', false);
