@@ -196,8 +196,6 @@ $(document).ready(function(){
 	$("#areaSelect").trigger("change");
 	
 	$("#submit").click(function(){
-		var responseCode;
-		var postData;
 		var queryURL = 'https://api.open511.gov.bc.ca/events?';
 
 		$('#tableRadio').attr('disabled', true);
