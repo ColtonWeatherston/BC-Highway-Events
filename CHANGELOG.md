@@ -2,6 +2,7 @@
 V1.8 (January 8, 2024)
 * Re-designed "View As" radio buttons
 * Made result cards more responsive for larger displays (up to 3 columns)
+
 V1.7 (June 26, 2023)
 * Added the following highways for Lower Mainland:
 	* Highway 7 (Lougheed Highway)
