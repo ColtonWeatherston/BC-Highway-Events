@@ -31,48 +31,48 @@
 		<p>Use the options below to set the filter, then click "View Events"</p>
 	</div>
 	
-    <div id="form" class="container">
-      <div class="form-group">
-		<div class="row">
-			<div class="col-6 col-sm-4 col-md-3">
-				<div class="form-floating">
-					<select class="form-select" name="area" id="areaSelect">
-						<option value="2" selected>Vancouver Island</option>
-						<option value="1">Lower Mainland</option>
-						<option value="6">Thompson-Nicola</option>
-					</select>
-					<label for="areaSelect">Area</label>
+	<div id="form" class="container">
+		<div class="form-group">
+			<div class="row">
+				<div class="col-6 col-sm-4 col-md-3">
+					<div class="form-floating">
+						<select class="form-select" name="area" id="areaSelect">
+							<option value="2" selected>Vancouver Island</option>
+							<option value="1">Lower Mainland</option>
+							<option value="6">Thompson-Nicola</option>
+						</select>
+						<label for="areaSelect">Area</label>
+					</div>
+				</div>
+				<div class="col-6 col-sm-4 col-md-3">
+					<div class="form-floating">
+						<select class="form-select" name="highway" id="highwaySelect">
+						</select>
+						<label for="highwaySelect">Route</label>
+					</div>
+				</div>
+				<div class="col-6 col-sm-4 col-md-3">
+					<div class="form-floating">
+						<select class="form-select" name="severity" id="severitySelect">
+							<option value="all" selected>All</option>
+							<option value="MAJOR">Major</option>
+							<option value="MINOR">Minor</option>
+						</select>
+						<label for="severitySelect">Severity</label>
+					</div>
+				</div>
+				<div class="col-6 col-sm-4 col-md-3">
+					View as: <br>
+					<div class="btn-group" role="group" aria-label="radio toggle group">
+						<input type="radio" class="btn-check" name="viewRadio" id="cardRadio" value="card" autocomplete="off" checked>
+						<label class="btn btn-outline-info" for="cardRadio">Cards</label>
+	
+						<input type="radio" class="btn-check" name="viewRadio" id="tableRadio" value="table" autocomplete="off">
+						<label class="btn btn-outline-info" for="tableRadio">Table</label>
+					</div>
 				</div>
 			</div>
-			<div class="col-6 col-sm-4 col-md-3">
-				<div class="form-floating">
-					<select class="form-select" name="highway" id="highwaySelect">
-					</select>
-					<label for="highwaySelect">Route</label>
-				</div>
-			</div>
-			<div class="col-6 col-sm-4 col-md-3">
-				<div class="form-floating">
-					<select class="form-select" name="severity" id="severitySelect">
-						<option value="all" selected>All</option>
-						<option value="MAJOR">Major</option>
-						<option value="MINOR">Minor</option>
-					</select>
-					<label for="severitySelect">Severity</label>
-				</div>
-			</div>
-			<div class="col-6 col-sm-4 col-md-3">
-				View as: <br>
-				<div class="btn-group" role="group" aria-label="radio toggle group">
-					<input type="radio" class="btn-check" name="viewRadio" id="cardRadio" value="card" autocomplete="off" checked>
-					<label class="btn btn-outline-info" for="cardRadio">Cards</label>
-				
-					<input type="radio" class="btn-check" name="viewRadio" id="tableRadio" value="table" autocomplete="off">
-					<label class="btn btn-outline-info" for="tableRadio">Table</label>
-				</div>
-			</div>
-			</div>
-      </div>
+		</div>
 
       <br>
 
