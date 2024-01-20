@@ -60,26 +60,29 @@ function getData(queryURL) {
 				
 				myObj.events[x].event_type = (myObj.events[x].event_type).replace("_", " ");
 				
-				for (let i = 0; i < myObj.events[x].event_subtypes.length; i++) {
-					myObj.events[x].event_subtypes[i] = myObj.events[x].event_subtypes[i].replace("_", " ");
+				if (myObj.events[x].event_subtypes != null) {
+					for (const i in myObj.events[x].event_subtypes) {
+						myObj.events[x].event_subtypes[i] = myObj.events[x].event_subtypes[i].replace("_", " ");
+						myObj.events[x].event_subtypes[i] = " - " + myObj.events[x].event_subtypes[i];
+					}
 				}
 				
 				if ($("input[name='viewRadio']:checked").val() == "table") {
 					// Sets table row colour to RED if event is MAJOR
 					if (myObj.events[x].severity == 'MAJOR') {
-						result += "<tr class=\"table-danger\"><td>" + myObj.events[x].roads[j].name + " " + dirPhrase + "</td><td>" + segment + "</td><td>" + myObj.events[x].event_type + " - " + myObj.events[x].event_subtypes + "</td>" + "<td>" + myObj.events[x].severity + "</td>" + "<td>" +  myObj.events[x].description + "</td><td>" + ((myObj.events[x].created).replace("T", " ")).slice(0, 19) + "</td><td>" + ((myObj.events[x].updated).replace("T", " ")).slice(0, 19) + "</td><td><a href=\"https://www.drivebc.ca/~" + (myObj.events[x].id).slice(11) + "\" class=\"btn btn-info\" target=\"_blank\">Link</a></td></tr>";
+						result += "<tr class=\"table-danger\"><td>" + myObj.events[x].roads[j].name + " " + dirPhrase + "</td><td>" + segment + "</td><td>" + myObj.events[x].event_type + " - " + (myObj.events[x].event_subtypes ?? "") + "</td>" + "<td>" + myObj.events[x].severity + "</td>" + "<td>" +  myObj.events[x].description + "</td><td>" + ((myObj.events[x].created).replace("T", " ")).slice(0, 19) + "</td><td>" + ((myObj.events[x].updated).replace("T", " ")).slice(0, 19) + "</td><td><a href=\"https://www.drivebc.ca/~" + (myObj.events[x].id).slice(11) + "\" class=\"btn btn-info\" target=\"_blank\">Link</a></td></tr>";
 					}
 					else {
-						result += "<tr><td>" + myObj.events[x].roads[j].name + " " + dirPhrase + "</td><td>" + segment + "</td><td>" + myObj.events[x].event_type + " - " + myObj.events[x].event_subtypes + "</td>" + "<td>" + myObj.events[x].severity + "</td>" + "<td>" +  myObj.events[x].description + "</td><td>" + ((myObj.events[x].created).replace("T", " ")).slice(0, 19) + "</td><td>" + ((myObj.events[x].updated).replace("T", " ")).slice(0, 19) + "</td><td><a href=\"https://www.drivebc.ca/~" + (myObj.events[x].id).slice(11) + "\" class=\"btn btn-info\" target=\"_blank\">Link</a></td></tr>";
+						result += "<tr><td>" + myObj.events[x].roads[j].name + " " + dirPhrase + "</td><td>" + segment + "</td><td>" + myObj.events[x].event_type + " - " + (myObj.events[x].event_subtypes ?? "") + "</td>" + "<td>" + myObj.events[x].severity + "</td>" + "<td>" +  myObj.events[x].description + "</td><td>" + ((myObj.events[x].created).replace("T", " ")).slice(0, 19) + "</td><td>" + ((myObj.events[x].updated).replace("T", " ")).slice(0, 19) + "</td><td><a href=\"https://www.drivebc.ca/~" + (myObj.events[x].id).slice(11) + "\" class=\"btn btn-info\" target=\"_blank\">Link</a></td></tr>";
 					}
 				}
 				else {
 					// Sets card colour to RED if event is MAJOR
 					if (myObj.events[x].severity == 'MAJOR') {
-						result += '<div class="col"><div class="card text-bg-danger"><div class="card-body"><h5 class="card-title">' + myObj.events[x].roads[j].name + ' ' + dirPhrase + '</h5>' + '<h6 class="card-subtitle mb-2 text-black">' + segment + '</h6>' + '<p class="card-text">' + myObj.events[x].description + '</p>' + '<a href="https://www.drivebc.ca/~' + (myObj.events[x].id).slice(11) + '" class="btn btn-info" target="_blank">More Details</a><br><br><div class="card-footer text-black"> Cause: ' + myObj.events[x].event_type + " - " + myObj.events[x].event_subtypes + '<br>Last Updated: ' + ((myObj.events[x].updated).replace("T", " ")).slice(0, 19) + '</div>' + '</div></div></div>';
+						result += '<div class="col"><div class="card text-bg-danger"><div class="card-body"><h5 class="card-title">' + myObj.events[x].roads[j].name + ' ' + dirPhrase + '</h5>' + '<h6 class="card-subtitle mb-2 text-black">' + segment + '</h6>' + '<p class="card-text">' + myObj.events[x].description + '</p>' + '<a href="https://www.drivebc.ca/~' + (myObj.events[x].id).slice(11) + '" class="btn btn-info" target="_blank">More Details</a><br><br><div class="card-footer text-black"> Cause: ' + myObj.events[x].event_type + (myObj.events[x].event_subtypes ?? "") + '<br>Last Updated: ' + ((myObj.events[x].updated).replace("T", " ")).slice(0, 19) + '</div>' + '</div></div></div>';
 					}
 					else {
-						result += '<div class="col"><div class="card"><div class="card-body"><h5 class="card-title">' + myObj.events[x].roads[j].name + ' ' + dirPhrase + '</h5>' + '<h6 class="card-subtitle mb-2 text-muted">' + segment + '</h6>' + '<p class="card-text">' + myObj.events[x].description + '</p><a href="https://www.drivebc.ca/~' + (myObj.events[x].id).slice(11) + '" class="btn btn-info" target="_blank">More Details</a>' + '<br><br><div class="card-footer text-muted"> Cause: ' + myObj.events[x].event_type + " - " + myObj.events[x].event_subtypes + '<br>Last Updated: ' + ((myObj.events[x].updated).replace("T", " ")).slice(0, 19) + '</div>' + '</div></div></div>';
+						result += '<div class="col"><div class="card"><div class="card-body"><h5 class="card-title">' + myObj.events[x].roads[j].name + ' ' + dirPhrase + '</h5>' + '<h6 class="card-subtitle mb-2 text-muted">' + segment + '</h6>' + '<p class="card-text">' + myObj.events[x].description + '</p><a href="https://www.drivebc.ca/~' + (myObj.events[x].id).slice(11) + '" class="btn btn-info" target="_blank">More Details</a>' + '<br><br><div class="card-footer text-muted"> Cause: ' + myObj.events[x].event_type + (myObj.events[x].event_subtypes ?? "") + '<br>Last Updated: ' + ((myObj.events[x].updated).replace("T", " ")).slice(0, 19) + '</div>' + '</div></div></div>';
 					}
 				}
 			}
