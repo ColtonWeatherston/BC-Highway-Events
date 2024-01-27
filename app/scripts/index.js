@@ -129,6 +129,13 @@ function getData(queryURL) {
 			$('#submit').html('View Events');
 			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(API Error 429 - Too many requests)</strong> Please wait 30 seconds and try again.</div></div>');
 			$('#submitError').show();
+		} else if (xhr.status == "500") {
+			$('#tableRadio').attr('disabled', false);
+			$('#cardRadio').attr('disabled', false);
+			$('#submit').attr('disabled', false);
+			$('#submit').html('View Events');
+			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(API Error 500 - Internal Server Error)</strong> The server encountered an error when processing the request. Please try again later.</div></div>');
+			$('#submitError').show();
 		} else { // unhandled error
 			$('#tableRadio').attr('disabled', false);
 			$('#cardRadio').attr('disabled', false);
@@ -197,20 +204,24 @@ $(document).ready(function(){
 		$('#submit').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...');
 		
 		if ($('#highwaySelect').val() == 'all') {
-			if  ($('#severitySelect').val() == 'all') {
+			if  ($("input[name='severityRadio']:checked").val() == 'all') {
 				queryURL += "area_id=drivebc.ca/" + $('#areaSelect').val();
-			}
-			else {
-				queryURL += "area_id=drivebc.ca/" + $('#areaSelect').val() + "&severity=" + $('#severitySelect').val();
+			} else {
+				queryURL += "area_id=drivebc.ca/" + $('#areaSelect').val() + "&severity=" + $("input[name='severityRadio']:checked").val();
 			}
 		}
 		else {
-			if  ($('#severitySelect').val() == 'all') {
+			if ($("input[name='severityRadio']:checked").val() == 'all') {
 				queryURL += "area_id=drivebc.ca/" + $('#areaSelect').val() + "&road_name=" + $('#highwaySelect').val();
+			} else {
+				queryURL += "area_id=drivebc.ca/" + $('#areaSelect').val() + "&road_name=" + $('#highwaySelect').val() + "&severity=" + $("input[name='severityRadio']:checked").val();
 			}
-			else {
-				queryURL += "area_id=drivebc.ca/" + $('#areaSelect').val() + "&road_name=" + $('#highwaySelect').val() + "&severity=" + $('#severitySelect').val();
-			}
+			// if  ($('#severitySelect').val() == 'all') {
+			// 	queryURL += "area_id=drivebc.ca/" + $('#areaSelect').val() + "&road_name=" + $('#highwaySelect').val();
+			// }
+			// else {
+			// 	queryURL += "area_id=drivebc.ca/" + $('#areaSelect').val() + "&road_name=" + $('#highwaySelect').val() + "&severity=" + $('#severitySelect').val();
+			// }
 		}
 		
 		getData(queryURL);
