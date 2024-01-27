@@ -129,6 +129,13 @@ function getData(queryURL) {
 			$('#submit').html('View Events');
 			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(API Error 429 - Too many requests)</strong> Please wait 30 seconds and try again.</div></div>');
 			$('#submitError').show();
+		} else if (xhr.status == "500") {
+			$('#tableRadio').attr('disabled', false);
+			$('#cardRadio').attr('disabled', false);
+			$('#submit').attr('disabled', false);
+			$('#submit').html('View Events');
+			$('#submitError').html('<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div><strong>(API Error 500 - Internal Server Error)</strong> The server encountered an error when processing the request. Please try again later.</div></div>');
+			$('#submitError').show();
 		} else { // unhandled error
 			$('#tableRadio').attr('disabled', false);
 			$('#cardRadio').attr('disabled', false);
