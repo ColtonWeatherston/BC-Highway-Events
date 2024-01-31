@@ -204,20 +204,24 @@ $(document).ready(function(){
 		$('#submit').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...');
 		
 		if ($('#highwaySelect').val() == 'all') {
-			if  ($('#severitySelect').val() == 'all') {
+			if  ($("input[name='severityRadio']:checked").val() == 'all') {
 				queryURL += "area_id=drivebc.ca/" + $('#areaSelect').val();
-			}
-			else {
-				queryURL += "area_id=drivebc.ca/" + $('#areaSelect').val() + "&severity=" + $('#severitySelect').val();
+			} else {
+				queryURL += "area_id=drivebc.ca/" + $('#areaSelect').val() + "&severity=" + $("input[name='severityRadio']:checked").val();
 			}
 		}
 		else {
-			if  ($('#severitySelect').val() == 'all') {
+			if ($("input[name='severityRadio']:checked").val() == 'all') {
 				queryURL += "area_id=drivebc.ca/" + $('#areaSelect').val() + "&road_name=" + $('#highwaySelect').val();
+			} else {
+				queryURL += "area_id=drivebc.ca/" + $('#areaSelect').val() + "&road_name=" + $('#highwaySelect').val() + "&severity=" + $("input[name='severityRadio']:checked").val();
 			}
-			else {
-				queryURL += "area_id=drivebc.ca/" + $('#areaSelect').val() + "&road_name=" + $('#highwaySelect').val() + "&severity=" + $('#severitySelect').val();
-			}
+			// if  ($('#severitySelect').val() == 'all') {
+			// 	queryURL += "area_id=drivebc.ca/" + $('#areaSelect').val() + "&road_name=" + $('#highwaySelect').val();
+			// }
+			// else {
+			// 	queryURL += "area_id=drivebc.ca/" + $('#areaSelect').val() + "&road_name=" + $('#highwaySelect').val() + "&severity=" + $('#severitySelect').val();
+			// }
 		}
 		
 		getData(queryURL);
