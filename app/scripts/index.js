@@ -10,19 +10,19 @@ function getData(queryURL) {
 			$('#submitError').hide();
 			$('#submit').attr('disabled', false);
 			$('#submit').html('View Events');
-	   var myObj = data;
-	   var result = "";
-	   if (myObj.events.length == 0) {
-			result = '<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div>No events were found matching your criteria</div></div>';
-	   }
-	   else {
-			if ($("input[name='viewRadio']:checked").val() == "table") {
-				result = "<thead class=\"table-light\"><tr><th>Route</th><th>Segment</th><th>Cause</th><th>Severity</th><th>Description</th><th>Created</th><th>Last Updated</th><th>More Details</th></tr></thead>";
+			var myObj = data;
+			var result = "";
+			if (myObj.events.length == 0) {
+				result = '<div class="alert alert-danger d-flex align-items-center" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg><div>No events were found matching your criteria</div></div>';
 			}
 			else {
-				result = '<div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">';
+				if ($("input[name='viewRadio']:checked").val() == "table") {
+					result = "<thead class=\"table-light\"><tr><th>Route</th><th>Segment</th><th>Cause</th><th>Severity</th><th>Description</th><th>Created</th><th>Last Updated</th><th>More Details</th></tr></thead>";
+				}
+				else {
+					result = '<div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">';
+				}
 			}
-		}
 		// PARSE JSON myObj (in data) and insert into variable "result"
 		for (x in myObj.events) {
 			for (j in myObj.events[x].roads) {
@@ -216,12 +216,6 @@ $(document).ready(function(){
 			} else {
 				queryURL += "area_id=drivebc.ca/" + $('#areaSelect').val() + "&road_name=" + $('#highwaySelect').val() + "&severity=" + $("input[name='severityRadio']:checked").val();
 			}
-			// if  ($('#severitySelect').val() == 'all') {
-			// 	queryURL += "area_id=drivebc.ca/" + $('#areaSelect').val() + "&road_name=" + $('#highwaySelect').val();
-			// }
-			// else {
-			// 	queryURL += "area_id=drivebc.ca/" + $('#areaSelect').val() + "&road_name=" + $('#highwaySelect').val() + "&severity=" + $('#severitySelect').val();
-			// }
 		}
 		
 		getData(queryURL);
