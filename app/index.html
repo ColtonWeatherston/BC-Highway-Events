@@ -51,19 +51,22 @@
 						<label for="highwaySelect">Route</label>
 					</div>
 				</div>
-				<div class="col-6 col-sm-4 col-md-3 mb-3">
-					<div class="form-floating">
-						<select class="form-select" name="severity" id="severitySelect">
-							<option value="all" selected>All</option>
-							<option value="MAJOR">Major</option>
-							<option value="MINOR">Minor</option>
-						</select>
-						<label for="severitySelect">Severity</label>
+				<div class="col-6 col-sm-4 col-md-3 mb-3 text-center">
+					Severity: <br>
+					<div class="btn-group" role="group" aria-label="radio toggle group">
+						<input type="radio" class="btn-check" name="severityRadio" id="allRadio" value="all" autocomplete="off" checked>
+						<label class="btn btn-outline-info" for="allRadio">All</label>
+	
+						<input type="radio" class="btn-check" name="severityRadio" id="majorRadio" value="MAJOR" autocomplete="off">
+						<label class="btn btn-outline-info" for="majorRadio">Major</label>
+
+						<input type="radio" class="btn-check" name="severityRadio" id="minorRadio" value="MINOR" autocomplete="off">
+						<label class="btn btn-outline-info" for="minorRadio">Minor</label>
 					</div>
 				</div>
-				<div class="col-6 col-sm-4 col-md-3 mb-3">
+				<div class="col-6 col-sm-4 col-md-3 mb-3 text-center">
 					View as: <br>
-					<div class="btn-group btn-group-sm" role="group" aria-label="radio toggle group">
+					<div class="btn-group" role="group" aria-label="radio toggle group">
 						<input type="radio" class="btn-check" name="viewRadio" id="cardRadio" value="card" autocomplete="off" checked>
 						<label class="btn btn-outline-info" for="cardRadio">Cards</label>
 	
