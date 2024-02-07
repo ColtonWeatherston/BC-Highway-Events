@@ -17,7 +17,7 @@ function getData(queryURL) {
 			}
 			else {
 				if ($("input[name='viewRadio']:checked").val() == "table") {
-					result = "<thead class=\"table-light\"><tr><th>Route</th><th>Segment</th><th>Cause</th><th>Severity</th><th>Description</th><th>Created</th><th>Last Updated</th><th>More Details</th></tr></thead>";
+					result = '<thead class="table-light"><tr><th>Route</th><th>Segment</th><th>Cause</th><th>Severity</th><th>Description</th><th>Created</th><th>Last Updated</th><th>More Details</th></tr></thead>';
 				}
 				else {
 					result = '<div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">';
@@ -150,45 +150,48 @@ function getData(queryURL) {
 
 $("#areaSelect").change(function() {
 	if ($("#areaSelect").val() == "2") { // Vancouver Island
-		$("#highwaySelect").html('<option value="all" selected>All</option>\
-								<option value="Highway%201">Highway 1 (Trans-Canada Hwy)</option>\
-								<option value="Highway%201A">Highway 1A (Chemainus Rd)</option>\
-								<option value="Highway%204">Highway 4 (Alberni/Pacific Rim Hwy</option>\
-								<option value="Highway%204A">Highway 4A (Old Alberni Hwy)</option>\
-								<option value="Highway%2014">Highway 14 (Sooke Rd/West Coast Rd)</option>\
-								<option value="Highway%2017">Highway 17 (Pat Bay Hwy)</option>\
-								<option value="Highway%2017A">Highway 17A (West Saanich Rd/Wain Rd)</option>\
-								<option value="Highway%2018">Highway 18 (Cowichan Valley Hwy)</option>\
-								<option value="Highway%2019">Highway 19 (Nanaimo Pkwy/Inland Island Hwy/North Island Hwy)</option>\
-								<option value="Highway%2019A">Highway 19A (Old Island Hwy N)</option>\
-								<option value="Highway%2028">Highway 28 (Gold River Hwy)</option>\
-								<option value="Highway%2030">Highway 30 (Port Alice Rd)</option>');
+		$("#highwaySelect").html(`
+								<option value="all" selected>All</option>
+								<option value="Highway%201">Highway 1 (Trans-Canada Hwy)</option>
+								<option value="Highway%201A">Highway 1A (Chemainus Rd)</option>
+								<option value="Highway%204">Highway 4 (Alberni/Pacific Rim Hwy</option>
+								<option value="Highway%204A">Highway 4A (Old Alberni Hwy)</option>
+								<option value="Highway%2014">Highway 14 (Sooke Rd/West Coast Rd)</option>
+								<option value="Highway%2017">Highway 17 (Pat Bay Hwy)</option>
+								<option value="Highway%2017A">Highway 17A (West Saanich Rd/Wain Rd)</option>
+								<option value="Highway%2018">Highway 18 (Cowichan Valley Hwy)</option>
+								<option value="Highway%2019">Highway 19 (Nanaimo Pkwy/Inland Island Hwy/North Island Hwy)</option>
+								<option value="Highway%2019A">Highway 19A (Old Island Hwy N)</option>
+								<option value="Highway%2028">Highway 28 (Gold River Hwy)</option>
+								<option value="Highway%2030">Highway 30 (Port Alice Rd)</option>`);
 	}
 	else if ($("#areaSelect").val() == "1") { // Lower Mainland
-		$("#highwaySelect").html('<option value="all" selected>All</option>\
-								<option value="Highway%201">Highway 1 (Trans-Canada Hwy)</option>\
-								<option value="Highway%207">Highway 7 (Lougheed Highway)</option>\
-								<option value="Highway%207A">Highway 7A</option>\
-								<option value="Highway%207B">Highway 7B (Mary Hill Bypass)</option>\
-								<option value="Highway%2010">Highway 10</option>\
-								<option value="Highway%2011">Highway 11 (Sumas Way/Abbotsford-Mission Hwy)</option>\
-								<option value="Highway%2013">Highway 13 (264th St/Aldergrove-Bellingham Hwy)</option>\
-								<option value="Highway%2015">Highway 15 (Pacific Hwy/176th St)</option>\
-								<option value="Highway%2017">Highway 17 (SFPR)</option>\
-								<option value="Highway%2017A">Highway 17A</option>\
-								<option value="Highway%2091">Highway 91 (East-West Connector/Annacis Hwy)</option>\
-								<option value="Highway%2091A">Highway 91A (Queensborough Connector)</option>\
-								<option value="Highway%2099">Highway 99</option>');
+		$("#highwaySelect").html(`
+								<option value="all" selected>All</option>
+								<option value="Highway%201">Highway 1 (Trans-Canada Hwy)</option>
+								<option value="Highway%207">Highway 7 (Lougheed Highway)</option>
+								<option value="Highway%207A">Highway 7A</option>
+								<option value="Highway%207B">Highway 7B (Mary Hill Bypass)</option>
+								<option value="Highway%2010">Highway 10</option>
+								<option value="Highway%2011">Highway 11 (Sumas Way/Abbotsford-Mission Hwy)</option>
+								<option value="Highway%2013">Highway 13 (264th St/Aldergrove-Bellingham Hwy)</option>
+								<option value="Highway%2015">Highway 15 (Pacific Hwy/176th St)</option>
+								<option value="Highway%2017">Highway 17 (SFPR)</option>
+								<option value="Highway%2017A">Highway 17A</option>
+								<option value="Highway%2091">Highway 91 (East-West Connector/Annacis Hwy)</option>
+								<option value="Highway%2091A">Highway 91A (Queensborough Connector)</option>
+								<option value="Highway%2099">Highway 99</option>`);
 	}
 	else if ($("#areaSelect").val() == "6") { // Thompson-Nicola
-		$("#highwaySelect").html('<option value="all" selected>All</option>\
-								<option value="Highway%201">Highway 1 (Trans-Canada Hwy)</option>\
-								<option value="Highway%205">Highway 5 (Coquihalla/Yellowhead Hwy)</option>\
-								<option value="Highway%205A">Highway 5A (Merritt-Princeton/Princeton-Kamloops Hwy)</option>\
-								<option value="Highway%208">Highway 8 (Merritt-Spences Bridge Hwy)</option>\
-								<option value="Highway%2012">Highway 12 (Lytton-Lillooet Hwy)</option>\
-								<option value="Highway%2097C">Highway 97C (Okanagan Connector)</option>\
-								<option value="Highway%2097C">Highway 97D (Meadow Creek Rd)</option>');
+		$("#highwaySelect").html(`
+								<option value="all" selected>All</option>
+								<option value="Highway%201">Highway 1 (Trans-Canada Hwy)</option>
+								<option value="Highway%205">Highway 5 (Coquihalla/Yellowhead Hwy)</option>
+								<option value="Highway%205A">Highway 5A (Merritt-Princeton/Princeton-Kamloops Hwy)</option>
+								<option value="Highway%208">Highway 8 (Merritt-Spences Bridge Hwy)</option>
+								<option value="Highway%2012">Highway 12 (Lytton-Lillooet Hwy)</option>
+								<option value="Highway%2097C">Highway 97C (Okanagan Connector)</option>
+								<option value="Highway%2097C">Highway 97D (Meadow Creek Rd)</option>`);
 	}
 });
 

@@ -1,4 +1,7 @@
 # Changelog
+V1.9 (January 30, 2024)
+* Changed "Severity" select menu to a radio button group
+
 V1.8 (January 8, 2024)
 * Re-designed "View As" radio buttons
 * Made result cards more responsive for larger displays (up to 3 columns)
