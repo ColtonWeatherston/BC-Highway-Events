@@ -296,7 +296,7 @@ $("#areaSelect").change(() => {
 $(document).ready(() => {
   $("#areaSelect").trigger("change");
 
-  $("#submit").click(function () {
+  $("#submit").click(() => {
     var queryURL = "https://api.open511.gov.bc.ca/events?";
 
     $("#tableRadio").attr("disabled", true);
