@@ -93,7 +93,7 @@ const getData = (queryURL) => {
                   myObj.events[x].created.replace("T", " ").slice(0, 19) +
                   "</td><td>" +
                   myObj.events[x].updated.replace("T", " ").slice(0, 19) +
-                  '</td><td><a href="https://beta.drivebc.ca/?type=event&id=' +
+                  '</td><td><a href="https://www.drivebc.ca/?type=event&id=' +
                   myObj.events[x].id.slice(11) +
                   '" class="btn btn-info" target="_blank">Link</a></td></tr>';
               } else {
@@ -117,7 +117,7 @@ const getData = (queryURL) => {
                   myObj.events[x].created.replace("T", " ").slice(0, 19) +
                   "</td><td>" +
                   myObj.events[x].updated.replace("T", " ").slice(0, 19) +
-                  '</td><td><a href="https://beta.drivebc.ca/?type=event&id=' +
+                  '</td><td><a href="https://www.drivebc.ca/?type=event&id=' +
                   myObj.events[x].id.slice(11) +
                   '" class="btn btn-info" target="_blank">Link</a></td></tr>';
               }
@@ -136,7 +136,7 @@ const getData = (queryURL) => {
                   '<p class="card-text">' +
                   myObj.events[x].description +
                   "</p>" +
-                  '<a href="https://beta.drivebc.ca/?type=event&id=' +
+                  '<a href="https://www.drivebc.ca/?type=event&id=' +
                   myObj.events[x].id.slice(11) +
                   '" class="btn btn-info" target="_blank">More Details</a><br><br><div class="card-footer text-black"> Cause: ' +
                   myObj.events[x].event_type +
@@ -157,7 +157,7 @@ const getData = (queryURL) => {
                   "</h6>" +
                   '<p class="card-text">' +
                   myObj.events[x].description +
-                  '</p><a href="https://beta.drivebc.ca/?type=event&id=' +
+                  '</p><a href="https://www.drivebc.ca/?type=event&id=' +
                   myObj.events[x].id.slice(11) +
                   '" class="btn btn-info" target="_blank">More Details</a>' +
                   '<br><br><div class="card-footer text-muted"> Cause: ' +
