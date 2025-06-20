@@ -1,4 +1,7 @@
 # Changelog
+V2.0 (June 18, 2025)
+* Updated to support new DriveBC website
+
 V1.9 (January 30, 2024)
 * Changed "Severity" select menu to a radio button group
 
