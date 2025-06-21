@@ -303,7 +303,7 @@ $(document).ready(() => {
     $("#cardRadio").attr("disabled", true);
     $("#submit").attr("disabled", true);
     $("#submit").html(
-      '<span class="spinner-border spinner-border-sm" aria-hidden="true"></span><span class="visually-hidden" role="status">Loading...</span>',
+      '<span class="spinner-grow spinner-grow-sm" role="status"></span><span class="visually-hidden">Loading...</span>',
     );
 
     if ($("#highwaySelect").val() == "all") {
