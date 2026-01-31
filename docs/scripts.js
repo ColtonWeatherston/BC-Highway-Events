@@ -245,7 +245,7 @@ const getData = (queryURL) => {
   });
 };
 
-$("#areaSelect").change(() => {
+$("#areaSelect").on("change", () => {
   if ($("#areaSelect").val() == "2") {
     // Vancouver Island
     $("#highwaySelect").html(`
