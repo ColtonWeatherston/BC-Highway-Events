@@ -1,2 +1,5 @@
-# Auto detect text files and perform LF normalization
+# Handle line endings automatically by default
 * text=auto
+
+# Force JavaScript files to always use LF (essential for SRI hashes)
+*.js text eol=lf
